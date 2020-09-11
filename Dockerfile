@@ -62,6 +62,4 @@ RUN mkdir -p /usr/local/var/run/watchman && \
 
 ENTRYPOINT ["/init"]
 
-# RUN apt-get update && apt-get install -y vim inotify-tools
-
 CMD ["gosu", "openhab", "tini", "-s", "/openhab/start.sh", "server"]
