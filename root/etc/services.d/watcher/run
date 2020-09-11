@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-watchman --logfile=/dev/stdout watch-project "$TEMPLATES_INPUT_DIR"
-watchman -- trigger "$TEMPLATES_INPUT_DIR" templates '**/*.tmpl' '*.yaml' -- parse-templates
-watchman shutdown-server
-watchman --foreground --logfile=/dev/stdout watch-project "$TEMPLATES_INPUT_DIR"
+# using gosu as openhab already uses it during start
+gosu watchman watchman --logfile=/dev/stdout watch-project "$TEMPLATES_INPUT_DIR"
+gosu watchman watchman -- trigger "$TEMPLATES_INPUT_DIR" templates '**/*.tmpl' '*.yaml' -- parse-templates
+gosu watchman watchman shutdown-server
+gosu watchman watchman --foreground --logfile=/dev/stdout watch-project "$TEMPLATES_INPUT_DIR"
