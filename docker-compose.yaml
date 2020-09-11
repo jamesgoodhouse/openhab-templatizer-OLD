@@ -12,6 +12,4 @@ services:
       OPENHAB_HTTPS_PORT: "8443"
       WATCH_TEMPLATES: 'true'
     volumes:
-    - ./examples/configs:/usr/local/etc/openhab/templates
-    - ./examples/configs.yaml:/usr/local/etc/openhab/configs.yaml
-    - ./examples/secrets.yaml:/usr/local/etc/openhab/secrets.yaml
+    - ./examples/configs:/usr/local/etc/openhab

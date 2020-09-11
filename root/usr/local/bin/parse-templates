@@ -4,8 +4,9 @@ set -euo pipefail
 
 command="/usr/local/bin/gomplate --input-dir='$TEMPLATES_INPUT_DIR' \
                                  --output-map='$TEMPLATES_OUTPUT_DIR/{{ .in | strings.ReplaceAll \".tmpl\" \" \" }}' \
-                                 --datasource='configs=$CONFIGS_PATH' \
-                                 --datasource='secrets=$SECRETS_PATH'"
+                                 --datasource='configs=$TEMPLATES_INPUT_DIR/configs.yaml' \
+                                 --datasource='secrets=$TEMPLATES_INPUT_DIR/secrets.yaml' \
+                                 --exclude='*.yaml'"
 
 # gomplate appears to not allow you to specify logger output and outputs JSON when not ran in a terminal
 script --return --quiet --command "$command" /dev/null
