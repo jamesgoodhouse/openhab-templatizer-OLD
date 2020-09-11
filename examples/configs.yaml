@@ -1,0 +1,7 @@
+addons:
+  binding: airquality,astro
+  package: minimal
+  ui: basic,habmin,paper
+i18n:
+  language: en
+  region: US
