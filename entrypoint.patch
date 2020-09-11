@@ -1,0 +1,21 @@
+--- entrypoint.sh.ORIG
++++ entrypoint.sh.NEW
+@@ -87,18 +87,6 @@
+ chown -R openhab:openhab "${OPENHAB_HOME}"
+ sync
+
+-# Run s6-style init continuation scripts if existent
+-if [ -d /etc/cont-init.d ]
+-then
+-    for script in $(find /etc/cont-init.d -type f | grep -v \~ | sort)
+-    do
+-        . "${script}"
+-    done
+-fi
+-
+-# sync again after continuation scripts have been run
+-sync
+-
+ # Use server mode with the default command when there is no pseudo-TTY
+ if [ "$interactive" == "false" ] && [ "$(IFS=" "; echo "$@")" == "gosu openhab tini -s ./start.sh" ]; then
+     command=($@ server)
