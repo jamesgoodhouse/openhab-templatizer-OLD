@@ -54,8 +54,7 @@ ENV TEMPLATE_VARS=/usr/local/etc/openhab/template_vars.yaml
 COPY --from=patched_entrypoint /entrypoint.sh /entrypoint.sh
 
 # setup watchman
-COPY --from=watchman /watchman/bin /usr/local/bin
-COPY --from=watchman /watchman/lib /usr/local/lib
+COPY --from=watchman /watchman /usr/local
 RUN mkdir -p /usr/local/var/run/watchman && \
     chmod 755 /usr/local/bin/watchman && \
     chmod 2777 /usr/local/var/run/watchman
