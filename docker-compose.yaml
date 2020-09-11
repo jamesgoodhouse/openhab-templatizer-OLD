@@ -13,4 +13,5 @@ services:
       WATCH_TEMPLATES: 'true'
     volumes:
     - ./examples/configs/items:/usr/local/etc/openhab/templates
-    - ./examples/vars.yaml:/usr/local/etc/openhab/template_vars.yaml
+    - ./examples/config_vars.yaml:/usr/local/etc/openhab/config_vars.yaml
+    - ./examples/secret_vars.yaml:/usr/local/etc/openhab/secret_vars.yaml
