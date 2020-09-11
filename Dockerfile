@@ -46,12 +46,11 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 # setup template stuff
 COPY --from=gomplate /gomplate /usr/local/bin/gomplate
-ENV TEMPLATES_INPUT_DIR=/usr/local/etc/openhab/templates
+ENV TEMPLATES_INPUT_DIR=/usr/local/etc/openhab
 ENV TEMPLATES_OUTPUT_DIR=$OPENHAB_CONF
-ENV CONFIGS_PATH=/usr/local/etc/openhab/configs.yaml
-ENV SECRETS_PATH=/usr/local/etc/openhab/secrets.yaml
 RUN mkdir -p "$TEMPLATES_INPUT_DIR" && \
-    touch "$CONFIGS_PATH" "$SECRETS_PATH"
+    touch "$TEMPLATES_INPUT_DIR/configs.yaml" \
+          "$TEMPLATES_INPUT_DIR/secrets.yaml"
 
 # add patched entrypoint.sh
 COPY --from=patched_entrypoint /entrypoint.sh /entrypoint.sh
