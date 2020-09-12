@@ -13,7 +13,7 @@ command="/usr/local/bin/gomplate --input-dir='$TEMPLATES_INPUT_DIR' \
                                  --datasource='configs=$configs_path' \
                                  --datasource='secrets=$secrets_path'"
 
-if [ "$GOMPLATE_VERBOSE" = true ]; then
+if [ "$VERBOSE_TEMPLATE_BUILD" = true ]; then
   command="${command} --verbose"
 fi
 
