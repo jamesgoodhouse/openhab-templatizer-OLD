@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+set -euo pipefail
+
 mkdir -p "$TEMPLATES_INPUT_DIR"
 touch "$TEMPLATES_INPUT_DIR/configs.yaml" "$TEMPLATES_INPUT_DIR/secrets.yaml"
 

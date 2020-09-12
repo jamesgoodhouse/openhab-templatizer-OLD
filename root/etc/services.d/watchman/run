@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+set -euo pipefail
+
 # using gosu as openhab already uses it during start
 gosu openhab watchman --logfile=/dev/stdout watch-project "$TEMPLATES_INPUT_DIR"
 gosu openhab watchman -- trigger "$TEMPLATES_INPUT_DIR" openhab '**/*.tmpl' '*.yaml' -- build-openhab-configs
