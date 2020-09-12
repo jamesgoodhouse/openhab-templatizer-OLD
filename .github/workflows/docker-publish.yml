@@ -31,7 +31,7 @@ jobs:
     - name: Log into Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u jgoodhouse --password-stdin
 
-    - name: Push image to GitHub Container Registry
+    - name: Push image Docker Hub
       run: |
         IMAGE_ID=$IMAGE_NAME
 
