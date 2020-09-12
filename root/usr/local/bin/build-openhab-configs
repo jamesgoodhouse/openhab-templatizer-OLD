@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+
+echo building openhab configs
+
+configs_path="$TEMPLATES_INPUT_DIR/configs.yaml"
+secrets_path="$TEMPLATES_INPUT_DIR/secrets.yaml"
+
+command="/usr/local/bin/gomplate --input-dir='$TEMPLATES_INPUT_DIR' \
+                                 --output-map='$TEMPLATES_OUTPUT_DIR/{{ .in | strings.ReplaceAll \".tmpl\" \" \" }}' \
+                                 --exclude='*.yaml' \
+                                 --datasource='configs=$configs_path' \
+                                 --datasource='secrets=$secrets_path'"
+
+if [ "$GOMPLATE_VERBOSE" = true ]; then
+  command="${command} --verbose"
+fi
+
+# gomplate appears to not allow you to specify logger output and outputs JSON when not ran in a terminal
+script --return --quiet --command "$command" /dev/null
