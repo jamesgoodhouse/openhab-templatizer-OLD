@@ -4,16 +4,16 @@ set -euo pipefail
 
 echo building openhab configs
 
-configs_path="$TEMPLATES_INPUT_DIR/configs.yaml"
-secrets_path="$TEMPLATES_INPUT_DIR/secrets.yaml"
+configs_path="$CONFIGS_INPUT_DIR/configs.yaml"
+secrets_path="$CONFIGS_INPUT_DIR/secrets.yaml"
 
-command="/usr/local/bin/gomplate --input-dir='$TEMPLATES_INPUT_DIR' \
-                                 --output-map='$TEMPLATES_OUTPUT_DIR/{{ .in | strings.ReplaceAll \".tmpl\" \" \" }}' \
+command="/usr/local/bin/gomplate --input-dir='$CONFIGS_INPUT_DIR' \
+                                 --output-map='$CONFIGS_OUTPUT_DIR/{{ .in | strings.ReplaceAll \".tmpl\" \" \" }}' \
                                  --exclude='*.yaml' \
                                  --datasource='configs=$configs_path' \
                                  --datasource='secrets=$secrets_path'"
 
-if [ "$VERBOSE_TEMPLATE_BUILD" = true ]; then
+if [ "$VERBOSE_CONFIG_BUILD" = true ]; then
   command="${command} --verbose"
 fi
 

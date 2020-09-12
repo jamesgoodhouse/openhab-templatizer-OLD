@@ -46,10 +46,10 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 # setup template stuff
 COPY --from=gomplate /gomplate /usr/local/bin/gomplate
-ENV TEMPLATES_INPUT_DIR=/usr/local/etc/openhab
-ENV TEMPLATES_OUTPUT_DIR=$OPENHAB_CONF
-ENV VERBOSE_TEMPLATE_BUILD=false
-ENV WATCH_TEMPLATES=false
+ENV CONFIGS_INPUT_DIR=/usr/local/etc/openhab
+ENV CONFIGS_OUTPUT_DIR=$OPENHAB_CONF
+ENV VERBOSE_CONFIG_BUILD=false
+ENV WATCH_CONFIGS=false
 
 # add patched entrypoint.sh
 COPY --from=patched_entrypoint /entrypoint.sh /entrypoint.sh
